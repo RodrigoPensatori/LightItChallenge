@@ -40,7 +40,11 @@ export default function AddPatientModal({modalVisible, setModalVisible }: AddPat
         <KeyboardAwareScrollView>
         <ScrollView>
           <View style={styles.modalView}>
+          <View style={styles.zIndex}>
+              <Toast />
+          </View>
           <View style={styles.modalHeader}>
+          
               <Text style={styles.modalTitle}>ADD PATIENT</Text>
 
               <TouchableOpacity onPress={() => setModalVisible(false)}>
@@ -52,7 +56,6 @@ export default function AddPatientModal({modalVisible, setModalVisible }: AddPat
               <Text style={styles.inputTitle}>Name</Text>
               <MainInput placeholder="Name" value={name} onChangeText={setName} />
             </View>
-            <Toast />
             <View style={styles.viewData}>
               <Text style={styles.inputTitle}>Description</Text>
               <MainInput placeholder="Description" value={description} onChangeText={setDescription} />
@@ -89,6 +92,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
+  },
+  zIndex:{
+    zIndex:1000
   },
   viewData:{
     marginBottom:15,

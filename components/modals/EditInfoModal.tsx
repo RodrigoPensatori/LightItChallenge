@@ -54,8 +54,11 @@ export default function EditInfoModal({ user, modalVisible, setModalVisible }: M
         <ScrollView>
         <Toast />
           <View style={styles.modalView}>
+            <View style={styles.zIndex}>
+              <Toast />
+            </View>
             <View style={styles.modalHeader}>
-            
+              
               <Text style={styles.modalTitle}>EDIT USER #{user.id}</Text>
 
               <TouchableOpacity onPress={() => setModalVisible(false)}>
@@ -64,11 +67,13 @@ export default function EditInfoModal({ user, modalVisible, setModalVisible }: M
             </View>
             
             <View>
+            
             <View style={styles.viewData}>
               <Text style={styles.inputTitle}>Name</Text>
+              
               <MainInput placeholder="Name" value={name} onChangeText={setName} />
             </View>
-            <Toast />
+            
 
            
 
@@ -76,7 +81,7 @@ export default function EditInfoModal({ user, modalVisible, setModalVisible }: M
               <Text style={styles.inputTitle}>Description</Text>
               <MainInput placeholder="Description" value={description} onChangeText={setDescription} />
             </View>
-            
+           
             <View style={styles.viewData}>
               <Text style={styles.inputTitle}>WebSite</Text>
               <MainInput placeholder="WebSite" value={website} onChangeText={setWebsite} />
@@ -115,6 +120,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
+  },
+  zIndex:{
+    zIndex:1000
   },
   viewData:{
     marginBottom:15,
