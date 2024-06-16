@@ -19,6 +19,7 @@ const MainInput = ({ placeholder, value, onChangeText }: MainInputProps) => {
       numberOfLines={3} 
       style={styles.input}
       placeholder={placeholder}
+      placeholderTextColor={'#949090'}
       value={value}
       onChangeText={(text)=>{
         onChangeText(text);
