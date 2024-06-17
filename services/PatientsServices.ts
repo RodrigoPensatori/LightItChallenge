@@ -1,6 +1,7 @@
 import { IUserInfo } from "@/types";
 import axios from "axios";
 
+//Obtener datos de los usuarios
 export const getUsersInfoApi = async (): Promise<IUserInfo | null> => {
     try {
         const res = await axios.get(`${process.env.EXPO_PUBLIC_API_BASE_URL}/users`);
@@ -13,6 +14,7 @@ export const getUsersInfoApi = async (): Promise<IUserInfo | null> => {
     return null;
 };
 
+//Obtener dato de 1 usuario a partir del nombre
 export const getUserInfoApi = async (name: string): Promise<IUserInfo | null> => {
     try {
         const res = await axios.get(`${process.env.EXPO_PUBLIC_API_BASE_URL}/users`);
@@ -32,9 +34,10 @@ export const getUserInfoApi = async (name: string): Promise<IUserInfo | null> =>
     return null;
 };
 
-export const editUserInfoApi = async (user:IUserInfo) => {
+//editar usuario
+export const editUserInfoApi = async (id:string,name:string,description:string,website:string) => {
     try {
-        const res = await axios.patch(`${process.env.EXPO_PUBLIC_API_BASE_URL}/user/${user.id}`, user);
+        const res = await axios.patch(`${process.env.EXPO_PUBLIC_API_BASE_URL}/user/${id}`, {name,description,website});
 
         return res.data;
     } catch (error) {
@@ -44,6 +47,7 @@ export const editUserInfoApi = async (user:IUserInfo) => {
     return null;
 };
 
+//agregar usuario
 export const addUserApi = async (name:string,description:string,website:string) => {
     try {
         const res = await axios.post(`${process.env.EXPO_PUBLIC_API_BASE_URL}/user/add`, {name,description,website});

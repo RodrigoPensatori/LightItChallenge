@@ -54,7 +54,7 @@ export default function MainCard({user,setIsRefreshing}: MainCardProps) {
         </View>  
       </TouchableOpacity>  
       
-       
+      {/* Parte de informacion detallada de la Card */}
       {
         isShowInfo && (
         <View style={styles.containerInfo}>
@@ -93,6 +93,7 @@ export default function MainCard({user,setIsRefreshing}: MainCardProps) {
         )
       }
 
+      {/* Modal de Editar Informacion */}
       {isShowModal && (
         <EditInfoModal modalVisible={isShowModal} setModalVisible={setIsShowModal} user={user} />
       

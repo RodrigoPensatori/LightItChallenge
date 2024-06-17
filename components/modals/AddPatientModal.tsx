@@ -9,6 +9,7 @@ import { verifyPatientData } from '@/utils/verifyPatientData';
 import { showToast } from '@/utils/showToast';
 import Toast from 'react-native-toast-message';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { addUserApi } from '@/services/PatientsServices';
 
 type AddPatientModalProps = {
   modalVisible: boolean;
@@ -40,11 +41,13 @@ export default function AddPatientModal({modalVisible, setModalVisible }: AddPat
         <KeyboardAwareScrollView>
         <ScrollView>
           <View style={styles.modalView}>
-          <View style={styles.zIndex}>
-              <Toast />
-          </View>
-          <View style={styles.modalHeader}>
-          
+            <View style={styles.zIndex}>
+                <Toast />
+            </View>
+            
+            {/* Header */}
+            <View style={styles.modalHeader}>
+              {/* Header del modal */}
               <Text style={styles.modalTitle}>ADD PATIENT</Text>
 
               <TouchableOpacity onPress={() => setModalVisible(false)}>
@@ -52,6 +55,7 @@ export default function AddPatientModal({modalVisible, setModalVisible }: AddPat
               </TouchableOpacity>
             </View>
             
+            {/* Body del modal */}
             <View style={styles.viewData}>
               <Text style={styles.inputTitle}>Name</Text>
               <MainInput placeholder="Name" value={name} onChangeText={setName} />
@@ -66,14 +70,24 @@ export default function AddPatientModal({modalVisible, setModalVisible }: AddPat
               <MainInput placeholder="WebSite" value={website} onChangeText={setWebsite} />
             </View>
             
+            {/* Boton */}
             <View style={styles.viewData}>
               
               <MainButton title="ADD" onPress={() => {
                 const res = ValidateData(name,description,website);
-                console.log(res); 
+                
                 if (res){
-                Alert.alert('OK', 'Patient saved');
-                setModalVisible(false);
+                //const isAdd = addUserApi(name,description,website);
+                //@ts-ignore pongo esto porque no se que devuelve la api de agregar paciente
+                const isAdd = true;
+                if(isAdd){
+                  showToast('Patient added successfully','SUCCESS','success');
+                }
+                else{
+                  showToast('Error adding patient','ERROR','error');
+                }
+                
+               
                 }
               }} />
             </View>

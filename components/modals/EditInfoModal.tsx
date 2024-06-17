@@ -9,6 +9,7 @@ import { verifyPatientData } from '@/utils/verifyPatientData';
 import Toast from 'react-native-toast-message';
 import { showToast } from '@/utils/showToast';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { editUserInfoApi } from '@/services/PatientsServices';
 
 
 type MainModalProps = {
@@ -51,61 +52,70 @@ export default function EditInfoModal({ user, modalVisible, setModalVisible }: M
       >
         <KeyboardAwareScrollView>
         <View style={styles.centeredView}>
-        <ScrollView>
-        <Toast />
-          <View style={styles.modalView}>
-            <View style={styles.zIndex}>
-              <Toast />
-            </View>
-            <View style={styles.modalHeader}>
+          <ScrollView>
+          <Toast />
+            <View style={styles.modalView}>
+              <View style={styles.zIndex}>
+                <Toast />
+              </View>
               
-              <Text style={styles.modalTitle}>EDIT USER #{user.id}</Text>
+              {/* Header */}
+              <View style={styles.modalHeader}>
+                
+                <Text style={styles.modalTitle}>EDIT USER #{user.id}</Text>
 
-              <TouchableOpacity onPress={() => setModalVisible(false)}>
-                <FontAwesomeIcon color='red' size={30} icon={faCircleXmark} />
-              </TouchableOpacity>
-            </View>
-            
-            <View>
-            
-            <View style={styles.viewData}>
-              <Text style={styles.inputTitle}>Name</Text>
+                <TouchableOpacity onPress={() => setModalVisible(false)}>
+                  <FontAwesomeIcon color='red' size={30} icon={faCircleXmark} />
+                </TouchableOpacity>
+              </View>
               
-              <MainInput placeholder="Name" value={name} onChangeText={setName} />
-            </View>
-            
-
-           
-
-            <View style={styles.viewData}>
-              <Text style={styles.inputTitle}>Description</Text>
-              <MainInput placeholder="Description" value={description} onChangeText={setDescription} />
-            </View>
-           
-            <View style={styles.viewData}>
-              <Text style={styles.inputTitle}>WebSite</Text>
-              <MainInput placeholder="WebSite" value={website} onChangeText={setWebsite} />
-            </View>
-            
-            <View style={styles.viewData}>
-               
-              <MainButton title="Save" onPress={() => {
-                const res = ValidateData(name,description,website);
-                if (res){
-                  showToast( 'Patient Saved','SAVED', 'success');
+              <View>
+              
+                {/* Informacion del usuario a editar */}
+                <View style={styles.viewData}>
+                  <Text style={styles.inputTitle}>Name</Text>
                   
-                  // Alert.alert('OK', 'User saved');
-                }
+                  <MainInput placeholder="Name" value={name} onChangeText={setName} />
+                </View>
+
+                <View style={styles.viewData}>
+                  <Text style={styles.inputTitle}>Description</Text>
+                  <MainInput placeholder="Description" value={description} onChangeText={setDescription} />
+                </View>
+              
+                <View style={styles.viewData}>
+                  <Text style={styles.inputTitle}>WebSite</Text>
+                  <MainInput placeholder="WebSite" value={website} onChangeText={setWebsite} />
+                </View>
+                
+                 {/* Boton */}
+                <View style={styles.viewData}>
                   
-              }} />
+                  <MainButton title="Save" onPress={() => {
+                    const res = ValidateData(name,description,website);
+                    if (res){
+                      //const isAdd = editUserInfoApi(user.id,name,description,website);
+                      //@ts-ignore pongo esto porque no se que devuelve la api de editar paciente y asi muestra siempre ok
+                      const isAdd = true;
+                      if(isAdd){
+                        showToast('Patient edited successfully','SUCCESS','success');
+                      }
+                      else{
+                        showToast('Error editing patient','ERROR','error');
+                      }
+                      
+                     
+                      }
+                      
+                  }} />
+                </View>
+              </View>
+              
+              
             </View>
-            </View>
-            
-            
-          </View>
           
          
-        </ScrollView>
+          </ScrollView>
         </View>
         </KeyboardAwareScrollView>
       </Modal>

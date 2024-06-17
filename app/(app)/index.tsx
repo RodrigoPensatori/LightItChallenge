@@ -75,6 +75,8 @@ useEffect(() => {
       >
       <Header/>
       <View style={styles.container}>
+        
+        {/* Header */}
         <View style={{
           width: '100%',
           alignItems: 'flex-end', 
@@ -97,6 +99,8 @@ useEffect(() => {
           </TouchableOpacity>
         
         </View>
+
+        {/* Filtros */}
         {isShowFilters && (
           <View style={{ marginBottom:30, width:'80%', height:45,flexDirection:'row', justifyContent:'space-between'}}>
             <View style={{width:'70%'}}><MainInput value={nameFilter} placeholder='Name' onChangeText={setNameFilter}></MainInput></View>
@@ -104,6 +108,8 @@ useEffect(() => {
             <MainButton title='Search' onPress={()=>{getUserInfo()}}></MainButton>
           </View>
         )}
+
+         {/* Carga de las Cards de pacientes */}
         {!isLoadingUsers ?
         
         (
@@ -114,7 +120,7 @@ useEffect(() => {
             
           ) : (
           
-          
+            //Carga de Pacientes
             <FlatList data={users} renderItem={({ item }) => 
             
               <View style={styles.separator} >
@@ -131,7 +137,8 @@ useEffect(() => {
             
             
         )}
-
+        
+         {/* Modal para agregar Pacientes */}
         {isShowModalAdd && (
           <AddPatientModal
             modalVisible={isShowModalAdd}
