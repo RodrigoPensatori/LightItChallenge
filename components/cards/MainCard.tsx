@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { IUserInfo } from '@/types';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -8,6 +8,7 @@ import { formatDate } from '@/utils/formatDate';
 import { openURL } from '@/utils/openURL';
 import EditInfoModal from '../modals/EditInfoModal';
 import Colors from '@/constants/Colors';
+import {Image} from  'expo-image'
 
 type MainCardProps = {
   user: IUserInfo;
@@ -34,7 +35,8 @@ export default function MainCard({user,setIsRefreshing}: MainCardProps) {
             alignItems: 'center',  
             justifyContent: 'center',
           }}>
-            <Image source={{ uri: user.avatar }} style={styles.avatar} />
+            <Image alt='asd' source={user.avatar} style={styles.avatar}
+            contentFit='cover'/>
             <Text style={styles.title}>{user.name}</Text>
           </View>
           <View style={{
@@ -113,7 +115,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 1, height: 3 },
     shadowOpacity: 1,
     shadowRadius: 4,
-    elevation: 5,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
@@ -139,8 +140,8 @@ const styles = StyleSheet.create({
   avatar: {
     width: 30,
     height: 30,
-    borderRadius: 15, // La mitad del ancho y alto para hacerlo redondo
-    marginRight: 10, // Añadir un espacio entre la imagen y el texto
+    borderRadius: 15, 
+    marginRight: 10
   },
   title: {
     fontSize: 20,

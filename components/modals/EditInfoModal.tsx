@@ -23,7 +23,7 @@ type MainModalProps = {
 function ValidateData(name:string,description:string,website:string){
   
   const res = verifyPatientData(name, description, website);
-  console.log(res);
+
   if(res){
     showToast( res,'ERROR', 'error');
    

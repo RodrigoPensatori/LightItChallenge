@@ -70,7 +70,7 @@ useEffect(() => {
     
   return (
       
-      <ScrollView
+      <ScrollView 
       refreshControl={<RefreshControl refreshing={refreshing} onRefresh={getUsersInfo}/>}
       >
       <Header/>
@@ -121,13 +121,12 @@ useEffect(() => {
           ) : (
           
             //Carga de Pacientes
-            <FlatList data={users} renderItem={({ item }) => 
-            
-              <View style={styles.separator} >
-                <MainCard setIsRefreshing={setIsRefreshing} user={item} />
+            users.map((user)=>{
+            return <View key={user.id} style={styles.separator} >
+              <MainCard setIsRefreshing={setIsRefreshing} user={user} />
               </View>
-          
-          } />
+            })
+           
           )
           
           

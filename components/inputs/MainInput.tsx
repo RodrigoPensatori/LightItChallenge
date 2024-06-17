@@ -35,13 +35,12 @@ const styles = StyleSheet.create({
     borderColor: Colors.colorPrimary,
     textAlign: 'center',
     margin: 5,
-    padding: 5,
+    padding: 2,
     fontSize: 16,
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 5,
+    shadowRadius: 2
   },
 });
 

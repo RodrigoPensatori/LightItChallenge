@@ -5,7 +5,6 @@ import axios from "axios";
 export const getUsersInfoApi = async (): Promise<IUserInfo | null> => {
     try {
         const res = await axios.get(`${process.env.EXPO_PUBLIC_API_BASE_URL}/users`);
-       
         return res.data;
     } catch (error) {
         console.log(error);

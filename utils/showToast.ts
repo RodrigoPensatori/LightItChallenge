@@ -7,7 +7,6 @@ type ToastTypes = {
 }
 
 export function showToast(message:string,title:string,type:string) {
-    console.log('message = ' + message + ' title = ' + title + ' type = ' + type);
     Toast.show({
         type: type,
         text1: title,
