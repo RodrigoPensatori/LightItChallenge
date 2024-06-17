@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     width: '90%',
-    backgroundColor: 'white', // Especificar un color de fondo para la vista contenida
+    backgroundColor: 'white',
   },
   containerEditButton:{
     width: '100%',
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     width: '90%',
-    backgroundColor: 'white', // Especificar un color de fondo para la vista contenida
+    backgroundColor: 'white',
   },
   containerInfoData: {
     flexDirection: 'row',
